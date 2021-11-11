@@ -1,0 +1,40 @@
+<%- include('header'); -%>
+    <div class="content">
+        <h1>Selected Articles</h1>
+        <table id="catalog">
+            <thead>
+                <tr>
+                    <th>Reference</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Supplier</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Vat</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Critical_stock</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(product => { %>
+                    <tr>
+                        <th scope="row">
+                            <%= product.name %>
+                        </th>
+                        <td>
+                            <a href="/api/article/<%= product.reference %>">
+                                <%= product.reference %>
+                            </a>
+                        </td>
+                        <td>
+                            <%= product.category %>
+                        </td>
+                        <td>
+                            <%= product.price %>AED
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <%- include('footer'); -%>
