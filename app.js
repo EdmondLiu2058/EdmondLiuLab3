@@ -19,6 +19,10 @@ app.get("/contacts", (req, res) => {
 const router = require("./routes/apis");
 app.use(router);
 
+// using JSON and URL Encoded middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 //make the app listen on port
 const port = process.argv[2] || process.env.PORT || 3000;
 const server = app.listen(port, () => {
