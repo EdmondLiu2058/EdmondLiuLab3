@@ -4,9 +4,7 @@ const session = require("express-session");
 const app = express();
 app.use(
   session({
-    secret: "password123",
-    resave: true,
-    saveUninitialized: true
+    secret: "keyboard 123"
   })
 );
 
@@ -28,7 +26,7 @@ app.get("/contacts", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.render("loginUI");
+  res.render("login");
 });
 
 app.get("/register", (req, res) => {

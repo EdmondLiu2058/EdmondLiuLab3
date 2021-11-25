@@ -2,15 +2,16 @@ const { Client } = require("../models/entities");
 
 const loginControl = (request, response) => {
   const clientServices = require("../services/clientServices");
-  console.log("-----------------------");
+  console.log("-----------00------------");
   console.log(request.body.username);
+  console.log(request.body.password);
   let username = request.body.username;
   let password = request.body.password;
   if (!username || !password) {
-    response.render("log_regis", { username: username });
+    response.render("log_regis", { username: "failed" });
   } else {
     if (request.session && request.session.user) {
-      response.render("login", { username: username });
+      response.render("login_post", { username: username });
     } else {
       clientServices.loginService(username, password, function (
         err,
@@ -20,14 +21,14 @@ const loginControl = (request, response) => {
         console.log("Client from login service :" + JSON.stringify(client));
         if (client === null) {
           //console.log("Auhtentication problem!");
-          response.render("log_regis", { username: username });
+          response.render("log_regis", { username: "failed" });
         } else {
           console.log("User from login service :" + client[0].num_client);
           //add to session
           request.session.user = username;
           request.session.num_client = client[0].num_client;
           //request.session.admin = false;
-          response.render("login", { username: username });
+          response.render("login_post", { username: username });
         }
       });
     }
