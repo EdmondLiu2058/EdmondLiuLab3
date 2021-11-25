@@ -10,14 +10,7 @@ const getCatalogue = (request, response) => {
 const getProductByID = (request, response) => {
   const catalogServices = require("../services/productServices");
   let reference = request.params.reference;
-  // console.log("-----------------------");
-  // console.log(reference);
-  // console.log(request.params);
   catalogServices.searchIDService(reference, function (err, rows) {
-    // response.json(rows);
-    // response.end();
-    // console.log("-----------------------");
-    // console.log(rows);
     response.render("article", { product: rows });
   });
 };

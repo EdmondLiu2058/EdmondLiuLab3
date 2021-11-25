@@ -15,7 +15,8 @@ router.get("/api/article/:reference", productController.getProductByID);
 //routes for dynamic processing of clients
 //-----------------------------------------------
 //route for registration
-router.post("/api/register", clientController.registerControl); //route for login
+router.post("/api/register", clientController.registerControl);
+//route for login
 router.post("/api/login", clientController.loginControl);
 
 //export router
