@@ -1,7 +1,14 @@
 const express = require("express");
-
+const session = require("express-session");
 //creating app
 const app = express();
+app.use(
+  session({
+    secret: "password123",
+    resave: true,
+    saveUninitialized: true
+  })
+);
 
 //handling static HTML and EJS templates
 app.use(express.static("public"));
